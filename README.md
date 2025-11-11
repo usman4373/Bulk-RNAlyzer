@@ -1,2 +1,3 @@
-# Bulk-RNAlyzer
-A complete workflow for analyzing and visualizing bulk RNA-seq data.
+![Bulk RNAlyzer cover](images/00-cover.png)
+
+
