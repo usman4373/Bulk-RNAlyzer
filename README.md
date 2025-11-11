@@ -1,3 +1,3 @@
-![cover](images/00-cover.png)
+![cover](images/00-coverpage.png)
 
 
