@@ -12,8 +12,6 @@
    - [3. Data Visualization Workflow](#3-data-visualization-workflow)
 6. [📚 Citation](#-citation)
 7. [🤝 Acknowledgements](#-acknowledgements)
-8. [💡 Inspiration](#-inspiration)
-
 
 ## 📝 Overview
 <p align="justify"> <b>Bulk RNAlyzer</b> is a comprehensive web-based application built with Streamlit that provides a complete workflow for analyzing and visualizing bulk RNA-seq data. This user-friendly interface allows researchers to perform end-to-end RNA-seq analysis without requiring extensive command-line expertise. </p>
@@ -43,9 +41,13 @@
 
 #### Create conda environment
 
+```
 conda create -n bulkrnalyzer python=3.11
+```
 
+```
 conda activate bulkrnalyzer
+```
 
 #### Install tools for bulk RNA-seq analysis
 
@@ -59,7 +61,7 @@ sudo apt install fastqc -y
 
 - Download the binary from the official [website](http://www.usadellab.org/cms/?page=trimmomatic) or build from [source](https://github.com/usadellab/Trimmomatic)
 
-#### Note: Trimmomatic is included in this repository. To use a different version, download the desired binary and replace the existing Trimmomatic folder.
+#### Note: Trimmomatic is included in this repository. To use a different version, download the desired binary, replace the existing Trimmomatic folder, and update the file path in the `config.py` file accordingly.
 
 #### 3. HISAT2
 
@@ -349,11 +351,17 @@ Start analysis from any step in the pipeline:
    - Pre-defined color palettes
    - Multiple genes in separate plots
 
-!
+![visualizations](images/02-visualizations.png)
+
+#### Note: Sample files for raw count matrices, normalized count matrices, metadata, and annotation are provided in the `sample files` directory.
 
 ## 📚 Citation
 
 If you use Bulk RNAlyzer in your research, please cite:
+
+```
+Bulk RNAlyzer. GitHub: https://github.com/usman4373/Bulk-RNAlyzer
+```
 
 ## 🤝 Acknowledgements
 
@@ -365,18 +373,10 @@ If you use Bulk RNAlyzer in your research, please cite:
    - StringTie - For accurate transcript quantification and assembly
    - DESeq2 - For robust differential expression analysis
    - SAMtools - For handling high-throughput sequencing data
+   - Sambamba - For fast and efficient processing of BAM files
    - ComplexHeatmap - For creating sophisticated heatmaps
    - ggplot2 - For elegant data visualization
    - EnhancedVolcano - For publication-ready volcano plots
    - Streamlit - For creating interactive web applications with Python
    - Pandas - For data manipulation and analysis
    - Other open-source tools
-
-## 💡 Inspiration
-
-This application was inspired by the need for:
-
-- Accessible bioinformatics for researchers without computational backgrounds
-- Reproducible workflows in transcriptomics analysis
-- Integrated solutions that bridge multiple analysis steps
-- Visual analytics for better data interpretation
