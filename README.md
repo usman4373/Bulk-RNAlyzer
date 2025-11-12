@@ -360,7 +360,7 @@ Start analysis from any step in the pipeline:
 If you use Bulk RNAlyzer in your research, please cite:
 
 ```
-Bulk RNAlyzer. GitHub: https://github.com/usman4373/Bulk-RNAlyzer
+Bulk-RNAlyzer. GitHub: https://github.com/usman4373/Bulk-RNAlyzer
 ```
 
 ## 🤝 Acknowledgements
@@ -380,3 +380,5 @@ Bulk RNAlyzer. GitHub: https://github.com/usman4373/Bulk-RNAlyzer
    - Streamlit - For creating interactive web applications with Python
    - Pandas - For data manipulation and analysis
    - Other open-source tools
+
+---
