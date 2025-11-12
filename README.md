@@ -175,8 +175,6 @@ The application will open in your default web browser at `http://localhost:8501`
 - Gene Annotations: GTF or GFF3 format
 - Adapter Sequences: FASTA format
 
-#### 🎯 Visualization Inputs
-
 📊 Count Matrices
 
 - Gene Count Matrix: CSV with genes as rows, samples as columns
@@ -202,6 +200,9 @@ The application will open in your default web browser at `http://localhost:8501`
 | ENST00000000442 | ENSG00000173153 | ESRRA      | ESRRA-201        | protein_coding | protein_coding     | 11  | 64305524   | 64316743   | +       | 197              | 276              | 161              | 483              |
 
 #### Note: File format details are provided to ensure count matrices are properly formatted when starting the workflow, specifically from the DGE analysis step.
+
+#### 🎯 Visualization Inputs
+
 
 🎨 Visualization Parameters
 
