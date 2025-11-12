@@ -1,0 +1,11 @@
+Gene,Biotype,Pathways
+NKPD1,protein_coding,TOR Signalling
+SLC8A2,protein_coding,Transport of inorganic cations/anions
+ENSG00000293143,pseudogene,Complement Cascade
+LDHAP3,pseudogene,Fatty Acid Oxidation
+C1S,protein_coding,Classical complement pathway activation (C1 complex)
+PTMAP9,processed pseudogene,MAPK Signaling Cascade
+GPD1,lncRNA,"Glycerol phosphate shuttle, lipid and carbohydrate metabolism"
+PTPRB,lncRNA,RAS Signaling
+RAD9B,protein_coding,DNA Replication Initiation
+HOXC5,protein_coding,WNT/catenin signalling
