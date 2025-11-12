@@ -49,46 +49,53 @@ conda activate bulkrnalyzer
 
 #### Install tools for bulk RNA-seq analysis
 
+```
+sudo apt update
+sudo apt upgrade
+```
+
 #### 1. Fastqc:
 
 ```
-sudo apt install fastqc
+sudo apt install fastqc -y
 ```
 
 #### 2. Trimmomatic
 
-Download binary from official website
+- Download the binary from the official [website](http://www.usadellab.org/cms/?page=trimmomatic) or build from [source](https://github.com/usadellab/Trimmomatic)
+
+#### Note: Trimmomatic is included in this repository. To use a different version, download the desired binary and replace the existing Trimmomatic folder.
 
 #### 3. HISAT2
 
 - Using the `HISAT2` officical [link](https://daehwankimlab.github.io/hisat2/download/#version-hisat2-221), download the binary or install from [source code](https://github.com/DaehwanKimLab/hisat2)
-- After downloading/installing add `HISAT2` directory to System's PATH:
+- After downloading/installing, add `HISAT2` directory to System's PATH:
 
-1. Open nano:
+a. Open the `.bashrc` file in nano:
 
-"""
+```
 nano ~/.bashrc
-"""
+```
 
-2. Add path of `HISAT2` directory:
+b. Add the path of the `HISAT2` directory at the end of the `.bashrc` file:
 
-"""
-export PATH=$PATH:/home/yourusername/tools/hisat2-2.2.1
-"""
+```
+export PATH=$PATH:/path/to/hisat2/directory
+```
 
-3. Save changes and exit:
+c. Save changes and exit:
 
 - `Ctrl + O` Save
-- Will be prompted for filename, press `Enter`
+- When prompted for filename, press `Enter`
 - `Ctrl + X` Exit
 
-4. Reload shell:
+d. Reload shell:
 
-"""
+```
 source ~/.bashrc
-"""
+```
 
-5. Verify by running:
+e. Verify by running:
 
 ```
 hisat2-build
@@ -96,27 +103,27 @@ hisat2-build
 
 #### 4. Samtools
 
-"""
-sudo apt install samtools
-"""
+```
+sudo apt install samtools -y
+```
 
 #### 5. Sambamba
 
-"""
-sudo apt install sambamba
-"""
+```
+sudo apt install sambamba -y
+```
 
 #### 6. gffread
 
 ```
-sudo apt install gffread
+sudo apt install gffread -y
 ```
 
 #### 7. StringTie
 
-"""
-sudo apt install stringtie
-"""
+```
+sudo apt install stringtie -y
+```
 
 #### 🐍 Install Python Dependencies
 
@@ -126,7 +133,7 @@ pip install streamlit pandas numpy pathlib subprocess -y
 
 #### Install R Packages
 
-- Open terminal and run:
+- Open a terminal and run:
 
 ```
 Rscript install_rpackages.R
@@ -153,14 +160,14 @@ The application will open in your default web browser at `http://localhost:8501`
 🏷️ Sample Metadata
 
 - Format: CSV
-- Required Columns: Sample identifiers (matching FASTQ file names), Condition/treatment groups etc
-- All column names should be lowercase
-- Example Strcuture:
+- Required Columns: Sample identifiers (matching FASTQ file names), Condition/treatment groups, etc (for DGE analysis, only 2 columns including sample and condition are enough)
+- All column names should be in lowercase
+- Example Structure:
 
 | sample | condition | time_point | batch |
 |-----------|-----------|------------|-------|
-| sample1 | treated | 24h | batch1 |
-| sample2 | control | 24h | batch1 |
+| SRR7063023 | treated | 24h | batch1 |
+| SRR7063025 | control | 24h | batch1 |
 
 📚 Reference Files
 
@@ -174,7 +181,27 @@ The application will open in your default web browser at `http://localhost:8501`
 
 - Gene Count Matrix: CSV with genes as rows, samples as columns
 - Transcript Count Matrix: CSV with transcripts as rows, samples as columns
-- Required Columns: gene_id, gene_symbol (for gene matrix) or transcript_id, transcript_name (for transcript matrix)
+- Required Columns for gene count matrix: gene_id, gene_symbol, gene_biotype, chr, start, end, strand, and sample columns
+- Required Columns for transcript count matrix: transcript_id, gene_id, gene_name, transcript_name, gene_biotype, transcript_biotype, chr, start, end, strand, and sample columns
+- Example Structure:
+
+**Gene Count Matrix File:**
+
+| gene_id        | gene_symbol | gene_biotype                        | chr | start | end   | strand | SRR7063023_dedup | SRR7063024_dedup | SRR7063025_dedup | SRR7063026_dedup |
+|----------------|--------------|-------------------------------------|-----|--------|--------|---------|------------------|------------------|------------------|------------------|
+| ENSG00000290825 | DDX11L16    | lncRNA                              | 1   | 11121  | 24894  | +       | 0                | 0                | 2                | 1                |
+| ENSG00000223972 | DDX11L1     | transcribed_unprocessed_pseudogene  | 1   | 12010  | 13670  | +       | 0                | 0                | 0                | 0                |
+| ENSG00000310526 | WASH7P      | lncRNA                              | 1   | 14356  | 30744  | -       | 142              | 191              | 208              | 223              |
+
+**Transcript Count Matrix File:**
+
+| transcript_id   | gene_id        | gene_name | transcript_name | gene_biotype   | transcript_biotype | chr | start     | end       | strand | SRR7063023_dedup | SRR7063024_dedup | SRR7063025_dedup | SRR7063026_dedup |
+|-----------------|----------------|------------|------------------|----------------|--------------------|-----|------------|------------|---------|------------------|------------------|------------------|------------------|
+| ENST00000000233 | ENSG00000004059 | ARF5       | ARF5-201         | protein_coding | protein_coding     | 7   | 127588411  | 127591700  | +       | 352              | 319              | 703              | 557              |
+| ENST00000000412 | ENSG00000003056 | M6PR       | M6PR-201         | protein_coding | protein_coding     | 12  | 8940361    | 8949645    | -       | 397              | 389              | 538              | 525              |
+| ENST00000000442 | ENSG00000173153 | ESRRA      | ESRRA-201        | protein_coding | protein_coding     | 11  | 64305524   | 64316743   | +       | 197              | 276              | 161              | 483              |
+
+#### Note: File format details are provided to ensure count matrices are properly formatted when starting the workflow, specifically from the DGE analysis step.
 
 🎨 Visualization Parameters
 
