@@ -7,11 +7,11 @@
 3. [🏃 How to run](#-how-to-run)
 4. [📂 Input file formats & expected structure](#-input-file-formats--expected-structure)
 5. [🔄 App workflows and usage](#-app-workflows-and-usage)
-   - [🧬 Genome Indexing Workflow](#-genome-indexing-workflow)
-   - [🔬 Bulk RNA-Seq Analysis Workflow](#-bulk-rna-seq-analysis-workflow)
-   - [📊 Data Visualization Workflow](#-data-visualization-workflow)
+   - [1. Genome Indexing Workflow](#1-genome-indexing-workflow)
+   - [2. Bulk RNA-Seq Analysis Workflow](#2-bulk-rna-seq-analysis-workflow)
+   - [3. Data Visualization Workflow](#3-data-visualization-workflow)
 6. [📚 Citation](#-citation)
-7. [🤝 Acknowledgments](#-acknowledgments)
+7. [🤝 Acknowledgements](#-acknowledgements)
 8. [💡 Inspiration](#-inspiration)
 
 
@@ -48,11 +48,6 @@ conda create -n bulkrnalyzer python=3.11
 conda activate bulkrnalyzer
 
 #### Install tools for bulk RNA-seq analysis
-
-```
-sudo apt update
-sudo apt upgrade
-```
 
 #### 1. Fastqc:
 
@@ -151,7 +146,7 @@ The application will open in your default web browser at `http://localhost:8501`
 
 ## 📂 Input file formats & expected structure
 
-#### 🔬 Bulk RNA-Seq Analysis Inputs
+#### Bulk RNA-Seq Analysis Inputs
 
 **Raw Sequencing Data**
 
@@ -201,7 +196,7 @@ The application will open in your default web browser at `http://localhost:8501`
 
 #### Note: File format details are provided to ensure count matrices are properly formatted when starting the workflow, specifically from the DGE analysis step.
 
-#### 🎯 Visualization Inputs
+#### Visualization Inputs
 
 - Normalized count matrices
 - Example Structure:
@@ -231,7 +226,7 @@ The application provides three main analysis types:
 - Bulk RNA-Seq Analysis - Complete pipeline from raw reads to differential expression
 - Data Visualizations - Create box-plots and heatmaps from analysis results
 
-1. Genome Indexing Workflow
+#### 1. Genome Indexing Workflow
 
 - Create custom `HISAT2` reference genome indexes for alignment, including support for `transcript-aware` and `SNP-aware` indexing.
 
@@ -256,7 +251,7 @@ Parameters:
 - Output: HISAT2 index files (.ht2)
 
 
-2. Bulk RNA-Seq Analysis Workflow
+#### 2. Bulk RNA-Seq Analysis Workflow
 
 Start analysis from any step in the pipeline:
 
@@ -336,9 +331,9 @@ Start analysis from any step in the pipeline:
    - PCA plots, volcano plots, heatmaps
    - Biotype-specific results
 
-3. Data Visualization Workflow
+#### 3. Data Visualization Workflow
 
-🔥 Heatmaps
+**🔥 Heatmaps**
 
 - Features:
    - Z-score normalized expression
@@ -346,7 +341,7 @@ Start analysis from any step in the pipeline:
    - Row and column annotations
    - Publication-ready resolution
 
-📦 Boxplots
+**📦 Boxplots**
 
 - Features:
    - Individual gene/transcript expression
@@ -360,7 +355,7 @@ Start analysis from any step in the pipeline:
 
 If you use Bulk RNAlyzer in your research, please cite:
 
-## 🙏 Acknowledgements
+## 🤝 Acknowledgements
 
 - Bulk RNAlyzer builds upon the work of open-source bioinformatics tools and libraries.
 - Please also cite the tools used in the analysis pipeline:
