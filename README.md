@@ -153,11 +153,11 @@ The application will open in your default web browser at `http://localhost:8501`
 
 #### 🔬 Bulk RNA-Seq Analysis Inputs
 
-🧬 Raw Sequencing Data
+**Raw Sequencing Data**
 
 - Format: FASTQ files (compressed .fastq.gz preferred)
 
-🏷️ Sample Metadata
+**Sample Metadata**
 
 - Format: CSV
 - Required Columns: Sample identifiers (matching FASTQ file names), Condition/treatment groups, etc (for DGE analysis, only 2 columns including sample and condition are enough)
@@ -169,13 +169,13 @@ The application will open in your default web browser at `http://localhost:8501`
 | SRR7063023 | treated | 24h | batch1 |
 | SRR7063025 | control | 24h | batch1 |
 
-📚 Reference Files
+**Reference Files**
 
 - Genome Assembly: FASTA format (.fa, .fasta)
 - Gene Annotations: GTF or GFF3 format
 - Adapter Sequences: FASTA format
 
-📊 Count Matrices
+**Count Matrices**
 
 - Gene Count Matrix: CSV with genes as rows, samples as columns
 - Transcript Count Matrix: CSV with transcripts as rows, samples as columns
@@ -203,26 +203,37 @@ The application will open in your default web browser at `http://localhost:8501`
 
 #### 🎯 Visualization Inputs
 
+- Normalized count matrices
+- Example Structure:
 
-🎨 Visualization Parameters
+| gene_id        | gene_symbol | Sample1      | Sample2      | Sample3      | Sample4      | Sample5      |
+|----------------|--------------|--------------|--------------|--------------|--------------|--------------|
+| ENSG00000290825 | Gnai3       | 2956.925239  | 4583.019379  | 3852.331432  | 3721.390533  | 4052.056950  |
+| ENSG00000223972 | Cdc45       | 410.0919315  | 364.9031354  | 329.1442723  | 460.6246055  | 373.1668664  |
+| ENSG00000310526 | H19         | 1132.828207  | 830.6671374  | 1043.689618  | 1329.184445  | 235.6452124  |
+| ENSG00000243485 | Scml2       | 16.24126461  | 27.06023251  | 42.82234155  | 56.4916969   | 130.088051   |
+
+#### Note: File format details are provided to ensure normalized count matrices are properly formatted when using the visualization workflow.
+
+**Visualization Parameters**
 
 - Gene Lists: Comma-separated gene names
 - Plot Dimensions: Customizable width and height in pixels
-- Color Palettes: Multiple predefined color schemes available for heatmap
+- Color Palettes: Multiple predefined color schemes available
 
 ## 🔄 App Workflows and Usage
 
-**Add image of streamlit app**
+![overview](images/01-app-overview.png)
 
 The application provides three main analysis types:
 
-- 🧬 Index Genome - Build reference genome indexes
-- 🔬 Bulk RNA-Seq Analysis - Complete pipeline from raw reads to differential expression
-- 📊 Data Visualizations - Create interactive plots from analysis results
+- Index Genome - Build reference genome indexes
+- Bulk RNA-Seq Analysis - Complete pipeline from raw reads to differential expression
+- Data Visualizations - Create box-plots and heatmaps from analysis results
 
-1. 🧬 Genome Indexing Workflow
+1. Genome Indexing Workflow
 
-- Create custom HISAT2 reference genome indexes for alignment, including support for transcript-aware and SNP-aware indexing.
+- Create custom `HISAT2` reference genome indexes for alignment, including support for `transcript-aware` and `SNP-aware` indexing.
 
 Select Index Type:
 
@@ -241,11 +252,11 @@ Parameters:
 
 - Number of threads
 - Large index option (for genomes >4 billion bases)
-- Offrate value (controls index density)
+- Off-rate value (controls index density)
 - Output: HISAT2 index files (.ht2)
 
 
-2. 🔬 Bulk RNA-Seq Analysis Workflow
+2. Bulk RNA-Seq Analysis Workflow
 
 Start analysis from any step in the pipeline:
 
@@ -258,13 +269,13 @@ Start analysis from any step in the pipeline:
 | 5️⃣ | **Quantification** | BAM files, Annotation file |
 | 6️⃣ | **DESeq2 Analysis** | Count matrices, Metadata file |
 
-Step 1: Quality Control (Before Trimming) 🔍
+**Step 1: Quality Control (Before Trimming)**
 
 - Tool: FastQC
 - Output: HTML reports with quality metrics
 - Assess raw read quality before processing
 
-Step 2: Read Trimming ✂️
+**Step 2: Read Trimming**
 
 - Tool: Trimmomatic
 - Parameters:
@@ -274,15 +285,15 @@ Step 2: Read Trimming ✂️
    - Adapter Selection: Built-in Trimmomatic adapters or custom adapter sequences
 - Output: Trimmed FASTQ files (*_paired.fastq.gz, *_unpaired.fastq.gz)
 
-Step 3: Quality Control (After Trimming) 🔍
+**Step 3: Quality Control (After Trimming)**
 
 - Tool: FastQC
 - Verify trimming effectiveness and final read quality
 - Output: Post-trimming quality reports
 
-Step 4: Alignment 🧬
+**Step 4: Alignment**
 
-- Tool: HISAT2 with SAMtools and Sambamba
+- Tools: HISAT2, SAMtools, and Sambamba
 - Parameters:
    - Number of threads
    - Maximum alignments per read
@@ -296,9 +307,9 @@ Step 4: Alignment 🧬
    - BAM indexing (SAMtools)
 - Output: Deduplicated, sorted BAM files with indexes
 
-Step 5: Quantification 📊
+**Step 5: Quantification**
 
-- Tool: StringTie with prepDE.py
+- Tool: StringTie
 - Parameters:
    - Minimum transcript coverage
    - Minimum isoform abundance
@@ -308,7 +319,7 @@ Step 5: Quantification 📊
    - Gene count matrix (gene_count_matrix.csv)
    - Transcript count matrix (transcript_count_matrix.csv)
 
-Step 6: Differential Expression Analysis 📈
+**Step 6: Differential Expression Analysis**
 
 - Tool: DESeq2 (R package)
 - Parameters:
@@ -325,7 +336,7 @@ Step 6: Differential Expression Analysis 📈
    - PCA plots, volcano plots, heatmaps
    - Biotype-specific results
 
-3. 📊 Data Visualization Workflow
+3. Data Visualization Workflow
 
 🔥 Heatmaps
 
@@ -343,7 +354,7 @@ Step 6: Differential Expression Analysis 📈
    - Pre-defined color palettes
    - Multiple genes in separate plots
 
-**Add visualization images**
+![visualization](images/02-visualization.png)
 
 ## 📚 Citation
 
