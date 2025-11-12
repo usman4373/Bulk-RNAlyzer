@@ -349,7 +349,7 @@ Start analysis from any step in the pipeline:
    - Pre-defined color palettes
    - Multiple genes in separate plots
 
-![visualization](images/02-visualization.png)
+!
 
 ## 📚 Citation
 
