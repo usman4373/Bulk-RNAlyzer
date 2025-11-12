@@ -353,7 +353,7 @@ Start analysis from any step in the pipeline:
 
 ![visualizations](images/02-visualizations.png)
 
-#### Note: Sample files for raw count matrices, normalized count matrices, metadata, and annotation are provided in the `sample files` directory.
+#### Note: Sample files for raw count matrices, normalized count matrices, metadata, and annotation are provided in the `sample_files` directory.
 
 ## 📚 Citation
 
