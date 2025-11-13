@@ -125,7 +125,7 @@ sudo apt install stringtie -y
 #### 🐍 Install Python Dependencies
 
 ```
-pip install streamlit pandas numpy pathlib subprocess
+pip install streamlit pandas numpy pathlib
 ```
 
 #### Install R Packages
