@@ -6,6 +6,7 @@ from .config import Config
 from .logger import add_to_log
 import subprocess
 import re
+import os
 
 # modules/trimming.py
 def get_trimming_params():
@@ -34,15 +35,21 @@ def get_trimming_params():
     
     # ALWAYS ask for adapter file (required for trimming)
     st.markdown("#### 🔧 Adapter Selection")
-    
+
+    # Get the absolute path of the directory where trimming.py is located
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    # Path to the adapters folder (relative to this file)
+    ADAPTER_DIR = os.path.join(BASE_DIR, '..', 'Trimmomatic-0.39', 'adapters')
+
     # Define available adapter files
     adapter_options = {
-        "TruSeq3-PE (Paired-End)": "/mnt/f/Installed_Softwares/Trimmomatic-0.39/adapters/TruSeq3-PE.fa",
-        "TruSeq3-PE-2 (Paired-End)": "/mnt/f/Installed_Softwares/Trimmomatic-0.39/adapters/TruSeq3-PE-2.fa",
-        "TruSeq3-SE (Single-End)": "/mnt/f/Installed_Softwares/Trimmomatic-0.39/adapters/TruSeq3-SE.fa",
-        "TruSeq2-PE (Paired-End)": "/mnt/f/Installed_Softwares/Trimmomatic-0.39/adapters/TruSeq2-PE.fa",
-        "TruSeq2-SE (Single-End)": "/mnt/f/Installed_Softwares/Trimmomatic-0.39/adapters/TruSeq2-SE.fa",
-        "NexteraPE-PE": "/mnt/f/Installed_Softwares/Trimmomatic-0.39/adapters/NexteraPE-PE.fa"
+        "TruSeq3-PE (Paired-End)": os.path.join(ADAPTER_DIR, 'TruSeq3-PE.fa'),
+        "TruSeq3-PE-2 (Paired-End)": os.path.join(ADAPTER_DIR, 'TruSeq3-PE-2.fa'),
+        "TruSeq3-SE (Single-End)": os.path.join(ADAPTER_DIR, 'TruSeq3-SE.fa'),
+        "TruSeq2-PE (Paired-End)": os.path.join(ADAPTER_DIR, 'TruSeq2-PE.fa'),
+        "TruSeq2-SE (Single-End)": os.path.join(ADAPTER_DIR, 'TruSeq2-SE.fa'),
+        "NexteraPE-PE": os.path.join(ADAPTER_DIR, 'NexteraPE-PE.fa')
     }
     
     # Auto-select based on mode, but allow override
