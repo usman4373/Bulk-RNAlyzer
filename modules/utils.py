@@ -60,4 +60,6 @@ def parse_gtf_attributes(attr_string):
             key, value = field.split(' ', 1)
             value = value.strip('"')
             attributes[key] = value
+
     return attributes
+    
