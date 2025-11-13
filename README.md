@@ -42,7 +42,7 @@
 #### Create conda environment
 
 ```
-conda create -n bulkrnalyzer python=3.11 -y
+conda create -n bulkrnalyzer python=3.10 -y
 ```
 
 ```
