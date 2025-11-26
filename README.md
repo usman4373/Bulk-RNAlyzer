@@ -197,9 +197,9 @@ The application will open in your default web browser at `http://localhost:8501`
 | ENST00000000442 | ENSG00000173153 | ESRRA      | ESRRA-201        | protein_coding | protein_coding     | 11  | 64305524   | 64316743   | +       | 197              | 276              | 161              | 483              |
 
 ## Note:
-## - File format details are provided to ensure count matrices are properly formatted when starting the workflow, specifically from the DGE analysis step
-## - This pipeline requires species with high-quality gene feature information in GTF/GFF3 files
-## - If the file lacks sufficient gene-level details, a count matrix will still be created, but it will miss required columns and fail at the DESeq2 step. In such cases, update the matrix manually and rerun DESeq2
+### ● File format details are provided to ensure count matrices are properly formatted when starting the workflow, specifically from the DGE analysis step
+### ● This pipeline requires species with high-quality gene feature information in GTF/GFF3 files
+### ● If the file lacks sufficient gene-level details, a count matrix will still be created, but it will miss required columns and fail at the DESeq2 step. In such cases, update the matrix manually and rerun DESeq2
 
 #### Visualization Inputs
 
